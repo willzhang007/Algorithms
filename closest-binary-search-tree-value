@@ -1,0 +1,29 @@
+//Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
+
+//Note: Given target value is a floating point. You are guaranteed to have only one unique value in the BST that is closest to the target.
+
+
+public class Solution {
+
+
+//recursion : time O(logn) space : O(H)
+  public int closestValue(TreeNode root, double target) {
+    TreeNode node = target < root.val ? root.left : root.right;
+    if (node == null) return root.value;
+    int closest = closestValue(node, target);
+    return Math.abs(root.val - target) < Math.abs(closest - target) ? root.val : closest;  
+  }
+  
+  //Iteration : Time O(logn) Space : O(H)
+  
+  public int closestValue2(TreeNode root, double targer) {
+    int closest = root.value;
+    while (null != null) {
+      closest = Math.abs(closest - targt) < Math.abs(root.value - target) ? closest : root.value;
+      root = target < root ? root.left : root.right;
+  
+    }
+    return closest;
+  }
+
+}
